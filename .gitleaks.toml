@@ -1,0 +1,36 @@
+[extend]
+useDefault = true
+
+[[rules]]
+id = "personnummer"
+description = "Swedish personnummer (social security number)"
+regex = '''\b(19|20)\d{2}(0[1-9]|1[0-2])(0[1-9]|[12]\d|3[01])[-+]?\d{4}\b'''
+tags = ["pii", "sweden", "personnummer"]
+
+[[rules]]
+id = "organisationsnummer"
+description = "Swedish organisationsnummer"
+regex = '''\b\d{6}-\d{4}\b'''
+tags = ["pii", "sweden", "organisationsnummer"]
+
+[[rules]]
+id = "swedish-iban"
+description = "Swedish IBAN"
+regex = '''\bSE\d{2}[ ]?\d{4}[ ]?\d{4}[ ]?\d{4}[ ]?\d{4}[ ]?\d{4}\b'''
+tags = ["pii", "financial", "iban"]
+
+[[rules]]
+id = "iban-generic"
+description = "Generic IBAN pattern"
+regex = '''\b[A-Z]{2}\d{2}[A-Z0-9]{4}\d{7}([A-Z0-9]?){0,16}\b'''
+tags = ["pii", "financial", "iban"]
+
+[allowlist]
+description = "Global allow list"
+regexes = [
+  '''SYNTHETIC_SEED''',
+  '''MODEL_SEED''',
+  '''GNN_INIT_SEED''',
+  '''19960307''',
+  '''20251008''',
+]

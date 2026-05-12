@@ -1,0 +1,10 @@
+{
+  "pipeline_run": "sha256:placeholder_hash",
+  "synthetic_households": "sha256:placeholder_hash",
+  "synthetic_firms": "sha256:placeholder_hash",
+  "synthetic_assets": "sha256:placeholder_hash",
+  "stata_descriptives": "sha256:placeholder_hash",
+  "stata_top_shares": "sha256:placeholder_hash",
+  "r_diagnostics": "sha256:placeholder_hash",
+  "r_decomposition": "sha256:placeholder_hash"
+}

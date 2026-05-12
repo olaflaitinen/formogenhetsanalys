@@ -1,0 +1,7 @@
+{
+  "synthetic_households": "sha256:9743294a10392287826537b33466bdbdb355ed7b2c3549eac67c43e9ac0ce074",
+  "synthetic_firms": "sha256:39837edb4d5110b2632eec12bd7d728f83d365f4ff397b97a0c435c72fcc5b65",
+  "synthetic_assets": "sha256:587fa10a543fd0e94d247e5f9313ece5c9678ce06f722d59ec7a3ec452692828",
+  "synthetic_ownership": "sha256:5851b444175d7b0dbb51201707801db421e0a334cf9acf070313ea94acdddfdb",
+  "synthetic_kinship": "sha256:00115d22c67834c1a97247bd841d445869809a52aa0c6f653a1cd709b8497ac7"
+}
