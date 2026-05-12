@@ -1,0 +1,21 @@
+name: Zenodo Upload
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+permissions:
+  contents: write
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Create Zenodo upload
+        uses: zenodo/action/upload@v2
+        with:
+          zenodo-token: ${{ secrets.ZENODO_TOKEN }}
+          zenodo-sandbox: false
+          upload-method: gitlab
