@@ -1,0 +1,152 @@
+{
+  "upload_type": "software",
+  "title": "Formogenhetsanalys: graph-aware estimation of wealth concentration in Sweden",
+  "description": "<p>Formogenhetsanalys is a Python research-software package for network-aware estimation and decomposition of wealth concentration in Sweden. It represents households, closely held firms (famansforetag), foundations, and ownership chains as a typed heterogeneous graph and deploys edge-typed message-passing graph neural networks with Bayesian shrinkage priors and variational inference over latent beneficial-ownership shares. Valuation harmonisation modules reconcile listed equity, residential real estate, and unlisted equity valuations. Distributional National Accounts adjustments align top-share estimates with World Inequality Lab methodology.</p>",
+  "creators": [
+    {
+      "name": "Laitinen-Fredriksson Lundstrom Imanov, Gustav Olaf Yunus",
+      "affiliation": "Department of Economics, Stockholm University",
+      "orcid": "0009-0006-5184-0810"
+    }
+  ],
+  "license": "EUPL-1.2",
+  "access_right": "open",
+  "language": "eng",
+  "version": "0.1.0",
+  "keywords": [
+    "wealth concentration",
+    "Sweden",
+    "graph neural networks",
+    "Bayesian inference",
+    "Distributional National Accounts",
+    "EUPL-1.2",
+    "OSOR",
+    "Interoperable Europe",
+    "FAIR4RS",
+    "heterogeneous graph",
+    "beneficial ownership",
+    "famansforetag",
+    "top-share estimation",
+    "research software"
+  ],
+  "communities": [
+    {"identifier": "eu-open-science"},
+    {"identifier": "zenodo"}
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/olaflaitinen/inkomstprognos",
+      "relation": "isPartOf",
+      "scheme": "url",
+      "resource_type": "software"
+    },
+    {
+      "identifier": "https://github.com/olaflaitinen/skatteprogressivitet",
+      "relation": "isPartOf",
+      "scheme": "url",
+      "resource_type": "software"
+    },
+    {
+      "identifier": "https://github.com/olaflaitinen/arvsdynamik",
+      "relation": "isPartOf",
+      "scheme": "url",
+      "resource_type": "software"
+    },
+    {
+      "identifier": "https://github.com/olaflaitinen/mobilitetsmodellen",
+      "relation": "isPartOf",
+      "scheme": "url",
+      "resource_type": "software"
+    },
+    {
+      "identifier": "https://github.com/olaflaitinen/inkomstklyftan",
+      "relation": "isPartOf",
+      "scheme": "url",
+      "resource_type": "software"
+    },
+    {
+      "identifier": "https://github.com/olaflaitinen/pensionsrattvisa",
+      "relation": "isPartOf",
+      "scheme": "url",
+      "resource_type": "software"
+    },
+    {
+      "identifier": "https://github.com/olaflaitinen/kapitalinkomst",
+      "relation": "isPartOf",
+      "scheme": "url",
+      "resource_type": "software"
+    },
+    {
+      "identifier": "https://github.com/olaflaitinen/lonedynamik",
+      "relation": "isPartOf",
+      "scheme": "url",
+      "resource_type": "software"
+    },
+    {
+      "identifier": "https://github.com/olaflaitinen/hushallsekonomi",
+      "relation": "isPartOf",
+      "scheme": "url",
+      "resource_type": "software"
+    },
+    {
+      "identifier": "https://github.com/olaflaitinen/skattereform",
+      "relation": "isPartOf",
+      "scheme": "url",
+      "resource_type": "software"
+    },
+    {
+      "identifier": "https://github.com/olaflaitinen/valflardsmodellen",
+      "relation": "isPartOf",
+      "scheme": "url",
+      "resource_type": "software"
+    },
+    {
+      "identifier": "https://github.com/olaflaitinen/generationsskifte",
+      "relation": "isPartOf",
+      "scheme": "url",
+      "resource_type": "software"
+    },
+    {
+      "identifier": "https://github.com/olaflaitinen/demografiprognos",
+      "relation": "isPartOf",
+      "scheme": "url",
+      "resource_type": "software"
+    },
+    {
+      "identifier": "https://github.com/olaflaitinen/mikrosimulering",
+      "relation": "isPartOf",
+      "scheme": "url",
+      "resource_type": "software"
+    },
+    {
+      "identifier": "https://github.com/olaflaitinen/toppinkomstandelen",
+      "relation": "isPartOf",
+      "scheme": "url",
+      "resource_type": "software"
+    },
+    {
+      "identifier": "https://github.com/olaflaitinen/bolagsskatteanalys",
+      "relation": "isPartOf",
+      "scheme": "url",
+      "resource_type": "software"
+    },
+    {
+      "identifier": "https://github.com/olaflaitinen/skatteflyktsdetektor",
+      "relation": "isPartOf",
+      "scheme": "url",
+      "resource_type": "software"
+    },
+    {
+      "identifier": "https://github.com/olaflaitinen/formansanalys",
+      "relation": "isPartOf",
+      "scheme": "url",
+      "resource_type": "software"
+    },
+    {
+      "identifier": "https://github.com/olaflaitinen/omfordelningsmodellen",
+      "relation": "isPartOf",
+      "scheme": "url",
+      "resource_type": "software"
+    }
+  ]
+}

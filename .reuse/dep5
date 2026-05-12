@@ -1,0 +1,34 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: Förmögenhetsanalys
+Upstream-Contact: olaf.laitinen@su.se
+Source: https://github.com/olaflaitinen/formogenhetsanalys
+
+Files: *
+Copyright: 2025-2026 Dr. Gustav Olaf Yunus Laitinen-Fredriksson Lundström Imanov, MD, RA, PhD
+ <olaf.laitinen@su.se> (ORCID 0009-0006-5184-0810),
+ Department of Economics, Stockholm University
+License: EUPL-1.2
+
+Files: data/synthetic/*
+Copyright: 2025-2026 Dr. Gustav Olaf Yunus Laitinen-Fredriksson Lundström Imanov, MD, RA, PhD
+ <olaf.laitinen@su.se> (ORCID 0009-0006-5184-0810),
+ Department of Economics, Stockholm University
+License: CC0-1.0
+
+Files: docs/*.md docs/**/*.md
+Copyright: 2025-2026 Dr. Gustav Olaf Yunus Laitinen-Fredriksson Lundström Imanov, MD, RA, PhD
+ <olaf.laitinen@su.se> (ORCID 0009-0006-5184-0810),
+ Department of Economics, Stockholm University
+License: CC-BY-4.0
+
+Files: LICENSES/CC0-1.0.txt
+Copyright: Creative Commons Corporation
+License: CC0-1.0
+
+Files: LICENSES/CC-BY-4.0.txt
+Copyright: Creative Commons Corporation
+License: CC-BY-4.0
+
+Files: LICENSES/EUPL-1.2.txt LICENSE
+Copyright: European Union 2007, 2016
+License: EUPL-1.2
