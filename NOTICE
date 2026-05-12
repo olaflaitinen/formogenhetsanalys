@@ -1,0 +1,33 @@
+Förmögenhetsanalys
+Graph-aware estimation and decomposition of wealth concentration in Sweden.
+
+Copyright 2025-2026 Dr. Gustav Olaf Yunus Laitinen-Fredriksson Lundström Imanov, MD, RA, PhD
+ORCID iD: https://orcid.org/0009-0006-5184-0810
+GitHub handle: olaflaitinen
+
+Department of Economics, Stockholm University
+SE-106 91 Stockholm, Sweden
+
+Contact (institutional, primary): olaf.laitinen@su.se
+Contact (personal mirror, secondary): olaf.laitinen@gmail.com
+
+This work is licensed under the European Union Public Licence, version 1.2 (EUPL-1.2).
+The full licence text is reproduced in the LICENSE file and in LICENSES/EUPL-1.2.txt.
+
+Synthetic graph fixtures distributed under data/synthetic/ are released under the
+Creative Commons CC0 1.0 Universal (CC0-1.0) public-domain dedication.
+See LICENSES/CC0-1.0.txt.
+
+Documentation files distributed under docs/ are licensed under the
+Creative Commons Attribution 4.0 International (CC-BY-4.0) licence.
+See LICENSES/CC-BY-4.0.txt.
+
+This repository does NOT contain personal data, real wealth records, real ownership chains,
+or trained model artefacts derived from real administrative microdata. All data included
+in the repository are deterministically generated synthetic fixtures that mimic the schema
+of Swedish administrative registers without reproducing any real individual's information.
+
+Processing of Swedish administrative microdata for research purposes is conducted exclusively
+inside the secure environment provided by Statistiska Centralbyran (SCB) under the terms of
+Lag (2001:99) om den officiella statistiken and Offentlighets- och sekretesslagen (2009:400),
+chapter 24. No such data are present in this repository.
