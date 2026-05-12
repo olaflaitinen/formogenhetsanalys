@@ -1,0 +1,98 @@
+site_name: "Förmögenhetsanalys"
+site_description: "Graph-aware estimation and decomposition of wealth concentration in Sweden."
+site_url: "https://olaflaitinen.github.io/formogenhetsanalys"
+repo_url: "https://github.com/olaflaitinen/formogenhetsanalys"
+repo_name: "olaflaitinen/formogenhetsanalys"
+edit_uri: "edit/main/docs/"
+docs_dir: docs
+site_dir: site
+
+theme:
+  name: material
+  language: en
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.tabs.link
+    - content.code.copy
+  font:
+    text: Roboto
+    code: Roboto Mono
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          paths: [src]
+          options:
+            docstring_style: google
+            show_source: true
+            show_root_heading: true
+
+nav:
+  - Home: index.md
+  - About: about.md
+  - Methodology: methodology.md
+  - API Reference: api.md
+  - Data:
+      - Overview: data.md
+      - Graph Schema: graph-schema.md
+      - Valuation: valuation.md
+  - Compliance:
+      - EU Compliance: eu-compliance.md
+      - GDPR: gdpr.md
+      - DPIA Summary: dpia-summary.md
+      - Swedish Legal Basis: swedish-legal-basis.md
+      - OSOR: osor.md
+      - FAIR4RS: fair4rs.md
+      - Accessibility: accessibility.md
+  - Reproducibility: reproducibility.md
+  - Governance: governance.md
+  - Citation: citation.md
+  - Glossary: glossary.md
+  - Deviations: deviations.md
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true
+  - tables
+  - toc:
+      permalink: true
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/olaflaitinen/formogenhetsanalys
+    - icon: fontawesome/solid/envelope
+      link: mailto:olaf.laitinen@su.se
+  version:
+    provider: mike
+
+copyright: >-
+  Copyright 2025-2026 Dr. Gustav Olaf Yunus Laitinen-Fredriksson Lundstrom Imanov, MD, RA, PhD.
+  Licensed under EUPL-1.2.
