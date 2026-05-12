@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Documentation
+    url: https://github.com/olaflaitinen/formogenhetsanalys/tree/main/docs
+    about: Check the documentation for usage guides and API reference
+  - name: Security
+    url: https://github.com/olaflaitinen/formogenhetsanalys/blob/main/SECURITY.md
+    about: Report security vulnerabilities privately
