@@ -2,63 +2,86 @@ name: CI
 
 on:
   push:
-    branches: [main]
+    branches: [main, "release/**"]
   pull_request:
     branches: [main]
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   lint:
-    runs-on: ubuntu-latest
+    name: Lint and format (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-22.04, macos-14, windows-2022]
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: astral-sh/setup-uv@v4
         with:
-          python-version: "3.12"
-      - name: Install uv
-        run: pip install uv
-      - name: Install dependencies
-        run: uv sync --extra dev
-      - name: Run ruff
-        run: uv run ruff check src tests scripts benchmarks
-      - name: Check formatting
-        run: uv run ruff format --check src tests scripts benchmarks
+          enable-cache: true
+      - run: uv sync --frozen --extra dev
+      - run: uv run ruff check .
+      - run: uv run ruff format --check .
 
-  type:
-    runs-on: ubuntu-latest
+  typecheck:
+    name: Type check
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: astral-sh/setup-uv@v4
         with:
-          python-version: "3.12"
-      - name: Install uv
-        run: pip install uv
-      - name: Install dependencies
-        run: uv sync --extra dev
-      - name: Run mypy
-        run: uv run mypy src --ignore-missing-imports
+          enable-cache: true
+      - run: uv sync --frozen --extra dev
+      - run: uv run mypy src
 
   test:
-    runs-on: ubuntu-latest
+    name: Test Python ${{ matrix.python }} (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false
       matrix:
-        python-version: ["3.11", "3.12"]
+        os: [ubuntu-22.04, macos-14, windows-2022]
+        python: ["3.11", "3.12"]
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: astral-sh/setup-uv@v4
         with:
-          python-version: ${{ matrix.python-version }}
-      - name: Install uv
-        run: pip install uv
-      - name: Install dependencies
-        run: uv sync --extra dev
-      - name: Run pytest
-        run: uv run pytest tests/ -x -q
+          enable-cache: true
+          python-version: ${{ matrix.python }}
+      - run: uv sync --frozen --extra dev
+      - run: uv run pytest -x -q --cov=formogenhetsanalys --cov-branch --cov-fail-under=85 --cov-report=xml
+        env:
+          OMP_NUM_THREADS: "1"
+          OPENBLAS_NUM_THREADS: "1"
+      - uses: codecov/codecov-action@v5
+        if: matrix.os == 'ubuntu-22.04' && matrix.python == '3.12'
+        with:
+          files: coverage.xml
+          token: ${{ secrets.CODECOV_TOKEN }}
+          fail_ci_if_error: false
 
   reuse:
-    runs-on: ubuntu-latest
+    name: REUSE compliance
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4
-      - name: Install reuse
-        run: pip install reuse
-      - name: Check REUSE compliance
-        run: reuse lint
+      - uses: astral-sh/setup-uv@v4
+        with:
+          enable-cache: true
+      - run: uv sync --frozen --extra dev
+      - run: uv run reuse lint
+
+  docs:
+    name: Build documentation
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v4
+        with:
+          enable-cache: true
+      - run: uv sync --frozen --extra docs
+      - run: uv run mkdocs build

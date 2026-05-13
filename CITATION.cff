@@ -46,10 +46,27 @@ identifiers:
     value: https://github.com/olaflaitinen/formogenhetsanalys
     description: GitHub repository
 references:
-  - type: software
-    title: "Inkomstprognos"
+  - type: article
+    title: "Distributional National Accounts: Methods and Estimates for the United States"
     authors:
-      - family-names: "Laitinen-Fredriksson Lundstrom Imanov"
-        given-names: "Gustav Olaf Yunus"
-    url: https://github.com/olaflaitinen/inkomstprognos
-    notes: "Sibling portfolio project - income forecasting"
+      - family-names: Piketty
+        given-names: Thomas
+      - family-names: Saez
+        given-names: Emmanuel
+      - family-names: Zucman
+        given-names: Gabriel
+    journal: "The Quarterly Journal of Economics"
+    year: 2018
+    volume: 133
+    issue: 2
+  - type: article
+    title: "The Role of Capital Income for Top Incomes Shares in Germany"
+    authors:
+      - family-names: Bach
+        given-names: Stefan
+      - family-names: Corneo
+        given-names: Giacomo
+      - family-names: Steiner
+        given-names: Viktor
+    journal: "Journal of Public Economics"
+    year: 2009

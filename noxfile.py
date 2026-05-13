@@ -2,9 +2,8 @@
 
 import nox
 
-nox.options.sessions = ["lint", "type", "test"]
+nox.options.sessions = ["lint", "typecheck", "test"]
 nox.options.reuse_existing_virtualenvs = True
-nox.options.error_on_external_run = False
 
 PYTHON_VERSIONS = ["3.11", "3.12"]
 SRC = "src"
@@ -18,40 +17,22 @@ def lint(session: nox.Session) -> None:
     session.run("ruff", "format", "--check", SRC, "tests", "scripts", "benchmarks")
 
 
-@nox.session(python=PYTHON_VERSIONS)
-def type(session: nox.Session) -> None:
+@nox.session(python="3.12")
+def typecheck(session: nox.Session) -> None:
     """Run mypy strict type checking."""
-    session.install(
-        "mypy>=1.10",
-        "pydantic>=2.6",
-        "typer>=0.12",
-        "structlog>=24.1",
-        "numpy>=1.26",
-        "pandas-stubs>=2.2",
-        "types-networkx>=3.3",
-    )
-    session.install("-e", ".")
+    session.install(".[dev]")
     session.run("mypy", "--strict", SRC)
 
 
 @nox.session(python=PYTHON_VERSIONS)
 def test(session: nox.Session) -> None:
     """Run the test suite."""
-    session.install(
-        "pytest>=8",
-        "pytest-cov>=5",
-        "pytest-xdist>=3.5",
-        "pytest-randomly>=3.15",
-        "hypothesis>=6.100",
-    )
-    session.install("-e", ".")
+    session.install(".[dev]")
     session.run(
         "pytest",
         "-x",
         "-q",
-        "--cov=formogenhetsanalys",
-        "--cov-report=term-missing",
-        "--cov-branch",
+        "--tb=short",
         *session.posargs,
     )
 
@@ -112,20 +93,14 @@ def reuse(session: nox.Session) -> None:
 
 @nox.session(python="3.12")
 def sbom(session: nox.Session) -> None:
-    """Generate CycloneDX SBOM."""
-    session.install("cyclonedx-bom>=4")
-    session.install("-e", ".")
-    session.run("cyclonedx-py", "environment", "-o", "sbom.cdx.json", "--of", "JSON")
+    """Generate CycloneDX SBOM via uvx (isolated to avoid jsonschema conflict)."""
+    session.install(".")
+    session.run("uvx", "cyclonedx-bom", "environment", "-o", "sbom.cdx.json", external=True)
 
 
 @nox.session(python="3.12")
 def release(session: nox.Session) -> None:
-    """Build and sign release artefacts (requires sigstore)."""
-    session.install("hatchling>=1.21", "build>=1.0", "sigstore>=2.0")
+    """Prepare release: build + verify CITATION.cff."""
+    session.install("hatchling>=1.21", "build>=1.2")
     session.run("python", "-m", "build")
-    session.run(
-        "sigstore",
-        "sign",
-        "dist/formogenhetsanalys-0.1.0.tar.gz",
-        "dist/formogenhetsanalys-0.1.0-py3-none-any.whl",
-    )
+    session.run("uvx", "cffconvert", "--validate", "CITATION.cff", external=True)

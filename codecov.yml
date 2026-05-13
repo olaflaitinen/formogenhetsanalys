@@ -6,18 +6,19 @@ coverage:
         threshold: 1%
     patch:
       default:
-        target: 80%
-        threshold: 5%
+        target: 85%
+        threshold: 2%
 
 comment:
-  layout: "reach,diff,flags,files"
+  layout: "reach, diff, flags, components"
   behavior: default
-  require_changes: true
+  require_changes: false
 
 ignore:
-  - "tests/**"
-  - "benchmarks/**"
-  - "scripts/**"
-  - "docs/**"
-  - "stata/**"
-  - "R/**"
+  - "tests/"
+  - "benchmarks/"
+  - "scripts/"
+  - "docs/"
+  - "stata/"
+  - "R/"
+  - "replication/"
