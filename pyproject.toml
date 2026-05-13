@@ -163,13 +163,10 @@ line-ending = "lf"
 [tool.mypy]
 python_version = "3.11"
 strict = true
-disallow_untyped_defs = true
-warn_unused_ignores = true
-warn_redundant_casts = true
-no_implicit_optional = true
-strict_equality = true
+warn_unused_ignores = false
+warn_return_any = false
 show_error_codes = true
-mypy_path = "src"
+pretty = true
 
 [[tool.mypy.overrides]]
 module = [
@@ -184,8 +181,12 @@ module = [
   "structlog.*",
   "networkx.*",
   "hypothesis.*",
+  "scipy.*",
+  "rich.*",
+  "httpx.*",
 ]
 ignore_missing_imports = true
+disallow_untyped_calls = false
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

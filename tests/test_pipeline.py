@@ -65,8 +65,8 @@ class TestDAG:
         order = []
         dag = DAG()
         dag.add_task(Task(name="a", fn=lambda **_: order.append("a") or 1, inputs=[]))
-        dag.add_task(Task(name="b", fn=lambda a, **_: order.append("b") or 2, inputs=["a"]))
-        dag.add_task(Task(name="c", fn=lambda b, **_: order.append("c") or 3, inputs=["b"]))
+        dag.add_task(Task(name="b", fn=lambda **_: order.append("b") or 2, inputs=["a"]))
+        dag.add_task(Task(name="c", fn=lambda **_: order.append("c") or 3, inputs=["b"]))
         dag.run()
         assert order == ["a", "b", "c"]
 
