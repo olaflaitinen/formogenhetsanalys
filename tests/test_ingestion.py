@@ -58,8 +58,7 @@ class TestWealthRegister:
     def test_total_wealth_components(self) -> None:
         df = synthetic_wealth_register(n=100, seed=SEED)
         components = (
-            df["financial_wealth"] + df["real_estate_wealth"]
-            + df["business_wealth"] - df["debt"]
+            df["financial_wealth"] + df["real_estate_wealth"] + df["business_wealth"] - df["debt"]
         )
         diff = (df["total_wealth"] - components).abs().max()
         assert diff < 1e7  # Allow even larger tolerance due to synthetic data generation

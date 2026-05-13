@@ -8,10 +8,11 @@ import sys
 
 def main() -> None:
     """Generate SBOM using cyclonedx-py."""
-    result = subprocess.run(
+    result = subprocess.run(  # noqa: S603 S607
         ["cyclonedx-py", "environment", "-o", "sbom.cdx.json", "--of", "JSON"],
         capture_output=True,
         text=True,
+        check=False,
     )
     if result.returncode != 0:
         print(f"Error generating SBOM: {result.stderr}", file=sys.stderr)

@@ -9,7 +9,6 @@ import polars as pl
 
 from formogenhetsanalys.config import Config
 from formogenhetsanalys.logging import get_logger
-from formogenhetsanalys.paths import SYNTHETIC_ROOT
 from formogenhetsanalys.seeds import set_global_seed
 
 log = get_logger(__name__)
@@ -98,7 +97,7 @@ class Pipeline:
             >>> p = Pipeline(cfg)
             >>> df = p.load_synthetic_parquet()
         """
-        parquet_path = SYNTHETIC_ROOT / "households.parquet"
+        parquet_path = self.config.data_root / "synthetic" / "households.parquet"
         if parquet_path.exists():
             return pl.read_parquet(parquet_path)
         return None

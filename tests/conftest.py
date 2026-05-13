@@ -48,13 +48,9 @@ def ownership_df(households_df: pl.DataFrame, firms_df: pl.DataFrame) -> pl.Data
     hh_ids = households_df["household_id"].to_list()
     firm_ids = firms_df["firm_id"].to_list()
     n_edges = 300
-    src = [
-        hh_ids[i % len(hh_ids)]
-        for i in rng.integers(0, len(hh_ids), size=n_edges).tolist()
-    ]
+    src = [hh_ids[i % len(hh_ids)] for i in rng.integers(0, len(hh_ids), size=n_edges).tolist()]
     dst = [
-        firm_ids[i % len(firm_ids)]
-        for i in rng.integers(0, len(firm_ids), size=n_edges).tolist()
+        firm_ids[i % len(firm_ids)] for i in rng.integers(0, len(firm_ids), size=n_edges).tolist()
     ]
     shares = rng.dirichlet(np.ones(n_edges), size=1)[0].tolist()
     return pl.DataFrame(

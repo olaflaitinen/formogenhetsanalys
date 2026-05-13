@@ -128,13 +128,17 @@ class TestRealEstate:
 
 class TestHarmonisation:
     def test_harmonise_adds_column(
-        self, households_df: pl.DataFrame, firms_df: pl.DataFrame,
+        self,
+        households_df: pl.DataFrame,
+        firms_df: pl.DataFrame,
     ) -> None:
         result = harmonise_valuations(households_df, firms_df)
         assert "harmonised_wealth" in result.columns
 
     def test_harmonise_book_method(
-        self, households_df: pl.DataFrame, firms_df: pl.DataFrame,
+        self,
+        households_df: pl.DataFrame,
+        firms_df: pl.DataFrame,
     ) -> None:
         result = harmonise_valuations(households_df, firms_df, method="book")
         tw = households_df["total_wealth"].to_numpy()
@@ -142,7 +146,9 @@ class TestHarmonisation:
         np.testing.assert_array_almost_equal(tw, hw)
 
     def test_sensitivity_grid_returns_all_methods(
-        self, households_df: pl.DataFrame, firms_df: pl.DataFrame,
+        self,
+        households_df: pl.DataFrame,
+        firms_df: pl.DataFrame,
     ) -> None:
         grid = sensitivity_grid(households_df, firms_df)
         assert "method" in grid.columns

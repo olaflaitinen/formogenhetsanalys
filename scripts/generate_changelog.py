@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 
-import subprocess
 import re
+import subprocess
 
 
 def get_commits_since_tag(tag: str = "v0.1.0") -> list[dict[str, str]]:
@@ -12,12 +12,13 @@ def get_commits_since_tag(tag: str = "v0.1.0") -> list[dict[str, str]]:
         ["git", "log", f"{tag}..HEAD", "--pretty=format:%h %s"],
         capture_output=True,
         text=True,
+        check=False,
     )
     commits = []
     for line in result.stdout.strip().split("\n"):
         if line:
-            hash, message = line.split(" ", 1)
-            commits.append({"hash": hash, "message": message})
+            commit_hash, message = line.split(" ", 1)
+            commits.append({"hash": commit_hash, "message": message})
     return commits
 
 
@@ -28,7 +29,7 @@ def categorize_commit(message: str) -> str:
         type_ = match.group(1)
         if type_ in ("feat", "fix"):
             return type_
-        elif type_ in ("docs", "chore", "refactor"):
+        if type_ in ("docs", "chore", "refactor"):
             return "other"
     return "other"
 

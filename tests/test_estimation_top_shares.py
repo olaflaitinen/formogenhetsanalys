@@ -7,7 +7,6 @@ import pytest
 
 from formogenhetsanalys.estimation.top_shares import top_share, top_shares_bootstrap
 
-
 SEED = 19960307
 RNG = np.random.default_rng(SEED)
 WEALTH = RNG.lognormal(13.0, 2.0, 500)

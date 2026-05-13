@@ -350,7 +350,9 @@ else:
         """CPU-only stub for RGCN when PyTorch is not installed."""
 
         def forward(
-            self, x_dict: dict[str, Any], edge_index_dict: dict[tuple[str, str, str], Any],
+            self,
+            x_dict: dict[str, Any],
+            edge_index_dict: dict[tuple[str, str, str], Any],
         ) -> dict[str, Any]:
             import numpy as np
 
@@ -368,7 +370,9 @@ else:
         """CPU-only stub for HeteroGAT when PyTorch is not installed."""
 
         def forward(
-            self, x_dict: dict[str, Any], edge_index_dict: dict[tuple[str, str, str], Any],
+            self,
+            x_dict: dict[str, Any],
+            edge_index_dict: dict[tuple[str, str, str], Any],
         ) -> dict[str, Any]:
             import numpy as np
 
@@ -386,7 +390,9 @@ else:
         """CPU-only stub for HeteroTransformer when PyTorch is not installed."""
 
         def forward(
-            self, x_dict: dict[str, Any], edge_index_dict: dict[tuple[str, str, str], Any],
+            self,
+            x_dict: dict[str, Any],
+            edge_index_dict: dict[tuple[str, str, str], Any],
         ) -> dict[str, Any]:
             import numpy as np
 
@@ -404,7 +410,9 @@ else:
         """CPU-only stub for GraphSAGEHetero when PyTorch is not installed."""
 
         def forward(
-            self, x_dict: dict[str, Any], edge_index_dict: dict[tuple[str, str, str], Any],
+            self,
+            x_dict: dict[str, Any],
+            edge_index_dict: dict[tuple[str, str, str], Any],
         ) -> dict[str, Any]:
             import numpy as np
 

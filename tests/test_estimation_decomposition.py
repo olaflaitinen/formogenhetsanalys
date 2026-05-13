@@ -5,8 +5,7 @@ from __future__ import annotations
 import numpy as np
 import pytest
 
-from formogenhetsanalys.estimation.decomposition import gini, atkinson, theil, shapley_decomposition
-
+from formogenhetsanalys.estimation.decomposition import atkinson, gini, shapley_decomposition, theil
 
 SEED = 19960307
 RNG = np.random.default_rng(SEED)

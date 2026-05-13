@@ -47,5 +47,10 @@ data/safe/
 
 .preflight-probe
 
+ruff_*.txt
+ruff_out.txt
+sbom.cdx.json
+coverage.xml
+
 *.pdf
 !docs/figures/*.pdf

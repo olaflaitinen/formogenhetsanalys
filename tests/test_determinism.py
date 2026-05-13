@@ -3,10 +3,8 @@
 from __future__ import annotations
 
 import numpy as np
-import pytest
 
-from formogenhetsanalys.seeds import set_global_seed, derive_seed
-
+from formogenhetsanalys.seeds import derive_seed, set_global_seed
 
 SEED = 19960307
 

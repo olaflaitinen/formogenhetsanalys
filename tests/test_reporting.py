@@ -95,7 +95,8 @@ class TestPDFA:
         assert out.exists()
 
     def test_figures_to_pdf_a_with_existing_figure(
-        self, tmp_path: pathlib.Path,
+        self,
+        tmp_path: pathlib.Path,
     ) -> None:
         fb = FigureBuilder(tmp_path / "figs")
         fig_paths = fb.lorenz_curve(np.array([1.0, 2.0, 5.0, 10.0, 20.0]))

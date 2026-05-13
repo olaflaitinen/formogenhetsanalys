@@ -135,7 +135,8 @@ ignore = [
 ]
 
 [tool.ruff.lint.per-file-ignores]
-"tests/*" = ["S101", "ARG001", "ARG002", "PLR0913"]
+"tests/*" = ["S101", "ARG001", "ARG002", "PLR0913", "S603", "S607", "PLW1510"]
+"scripts/*" = ["S603", "S607", "PLW1510"]
 "benchmarks/*" = ["S101", "ARG001"]
 "src/formogenhetsanalys/models/hetero_gnn.py" = ["ARG002", "E501", "PLC0415"]
 "src/formogenhetsanalys/cli.py" = ["ARG001", "PLC0415"]
@@ -184,6 +185,7 @@ module = [
   "scipy.*",
   "rich.*",
   "httpx.*",
+  "weasyprint.*",
 ]
 ignore_missing_imports = true
 disallow_untyped_calls = false

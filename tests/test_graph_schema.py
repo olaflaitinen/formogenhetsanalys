@@ -2,14 +2,9 @@
 
 from __future__ import annotations
 
-import pytest
-
 from formogenhetsanalys.graph.schema import (
-    HouseholdNode,
     FirmNode,
-    AssetNode,
-    OwnershipEdge,
-    KinshipEdge,
+    HouseholdNode,
 )
 
 

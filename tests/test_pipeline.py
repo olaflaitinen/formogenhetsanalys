@@ -117,7 +117,8 @@ class TestPipeline:
         assert r1["receipt_sha256"] == r2["receipt_sha256"]
 
     def test_load_synthetic_parquet_missing(
-        self, tmp_path: pathlib.Path,
+        self,
+        tmp_path: pathlib.Path,
     ) -> None:
         cfg = Config(data_root=tmp_path)
         p = Pipeline(cfg)

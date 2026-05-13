@@ -6,10 +6,8 @@ import hashlib
 import json
 import pathlib
 
-from formogenhetsanalys.ingestion.wealth_register import synthetic_wealth_register
 from formogenhetsanalys.ingestion.firm_register import synthetic_firm_register
-from formogenhetsanalys.ingestion.asset_prices import synthetic_asset_prices
-
+from formogenhetsanalys.ingestion.wealth_register import synthetic_wealth_register
 
 SYNTHETIC_SEED = 19960307
 
@@ -45,14 +43,16 @@ def main() -> None:
 
     # Generate assets
     rng = np.random.default_rng(SYNTHETIC_SEED + 2)
-    assets_df = pl.DataFrame({
-        "asset_id": [f"A{i:04d}" for i in range(100)],
-        "asset_type": rng.choice(["real_estate", "listed_equity"], 100),
-        "value_market": rng.lognormal(13.0, 2.0, 100),
-        "value_book": rng.lognormal(12.5, 1.8, 100),
-        "isin": [""] * 100,
-        "year": [2022] * 100,
-    })
+    assets_df = pl.DataFrame(
+        {
+            "asset_id": [f"A{i:04d}" for i in range(100)],
+            "asset_type": rng.choice(["real_estate", "listed_equity"], 100),
+            "value_market": rng.lognormal(13.0, 2.0, 100),
+            "value_book": rng.lognormal(12.5, 1.8, 100),
+            "isin": [""] * 100,
+            "year": [2022] * 100,
+        }
+    )
     assets_path = data_dir / "assets.parquet"
     assets_df.write_parquet(assets_path)
     with open(assets_path, "rb") as f:
@@ -63,25 +63,29 @@ def main() -> None:
     firm_ids = firms_df["firm_id"].to_list()
     asset_ids = assets_df["asset_id"].to_list()
     n_edges = 300
-    edges_ownership = pl.DataFrame({
-        "source_id": rng.choice(hh_ids + firm_ids, n_edges),
-        "target_id": rng.choice(firm_ids + asset_ids, n_edges),
-        "ownership_share": rng.dirichlet(np.ones(n_edges), size=1)[0],
-        "ownership_type": rng.choice(["direct", "indirect"], n_edges),
-        "year": [2022] * n_edges,
-    })
+    edges_ownership = pl.DataFrame(
+        {
+            "source_id": rng.choice(hh_ids + firm_ids, n_edges),
+            "target_id": rng.choice(firm_ids + asset_ids, n_edges),
+            "ownership_share": rng.dirichlet(np.ones(n_edges), size=1)[0],
+            "ownership_type": rng.choice(["direct", "indirect"], n_edges),
+            "year": [2022] * n_edges,
+        }
+    )
     ownership_path = data_dir / "edges_ownership.parquet"
     edges_ownership.write_parquet(ownership_path)
     with open(ownership_path, "rb") as f:
         receipts["synthetic_ownership"] = compute_receipt(f.read())
 
     # Generate kinship edges
-    kinship_df = pl.DataFrame({
-        "source_id": rng.choice(hh_ids, 50),
-        "target_id": rng.choice(hh_ids, 50),
-        "kinship_type": rng.choice(["spouse", "parent-child", "sibling"], 50),
-        "year": [2022] * 50,
-    })
+    kinship_df = pl.DataFrame(
+        {
+            "source_id": rng.choice(hh_ids, 50),
+            "target_id": rng.choice(hh_ids, 50),
+            "kinship_type": rng.choice(["spouse", "parent-child", "sibling"], 50),
+            "year": [2022] * 50,
+        }
+    )
     kinship_path = data_dir / "edges_kinship.parquet"
     kinship_df.write_parquet(kinship_path)
     with open(kinship_path, "rb") as f:

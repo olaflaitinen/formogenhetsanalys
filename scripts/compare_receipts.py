@@ -44,8 +44,7 @@ def compare_receipts(expected_path: pathlib.Path, actual_path: pathlib.Path) -> 
         for m in mismatches:
             print(f"  - {m}")
         raise SystemExit(1)
-    else:
-        print("All receipts match successfully!")
+    print("All receipts match successfully!")
 
 
 if __name__ == "__main__":

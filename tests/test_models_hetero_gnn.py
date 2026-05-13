@@ -5,7 +5,7 @@ from __future__ import annotations
 import numpy as np
 import pytest
 
-from formogenhetsanalys.models.hetero_gnn import get_model, BaseHeteroGNN
+from formogenhetsanalys.models.hetero_gnn import BaseHeteroGNN, get_model
 
 
 class TestHeteroGNN:
